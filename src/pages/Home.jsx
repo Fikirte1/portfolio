@@ -926,155 +926,180 @@ const Home = () => {
         
       </section> */}
       
-       <section ref={contactRef} className="py-20 relative bg-gray-50 dark:bg-dark-secondary">
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
+  <section ref={contactRef} className="py-20 bg-gray-50 dark:bg-dark-light relative">    
+      <div className="container">
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
+          animate={{ opacity: 1, y: 0 }}
+          className="text-4xl font-bold text-center mb-12"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-4">Contact Me</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            Have a project in mind or just want to say hi? Feel free to reach out!
-          </p>
-        </motion.div>
+          Get in Touch
+        </motion.h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Contact Info */}
+        <div className="grid grid-cols-2 lg:grid-cols-2 gap-1">
+          {/* Contact Information */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="p-6 rounded-lg shadow-md dark:bg-dark-primary"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-8"
           >
-            <div className="flex items-center mb-4 text-primary">
-              <FiMail className="w-6 h-6 mr-3" />
-              <h3 className="text-xl font-semibold dark:text-gray-100">Email</h3>
+            <div className="glass p-6 rounded-xl">
+              <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4">
+                  <FiMail className="text-primary" size={24} />
+                  <div>
+                    <h3 className="font-medium">Email</h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      fikirshawul@gmail.com
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <FiPhone className="text-secondary" size={24} />
+                  <div>
+                    <h3 className="font-medium">Phone</h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      +1 (123) 456-7890
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <FiMapPin className="text-primary" size={24} />
+                  <div>
+                    <h3 className="font-medium">Location</h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      City, Country
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="text-gray-600 dark:text-gray-300">fikirte.shawul@example.com</p>
+
+            {/* Social Links */}
+            <div className="glass p-6 rounded-xl">
+              <h2 className="text-2xl font-semibold mb-6">Social Media</h2>
+              <div className="flex space-x-4">
+                <a
+                  href="https://github.com/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-light transition-colors"
+                >
+                  <FiGithub size={24} />
+                </a>
+                <a
+                  href="https://linkedin.com/in/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-light transition-colors"
+                >
+                  <FiLinkedin size={24} />
+                </a>
+                <a
+                  href="https://twitter.com/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-light transition-colors"
+                >
+                  <FiTwitter size={24} />
+                </a>
+              </div>
+            </div>
           </motion.div>
 
+          {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="p-6 rounded-lg shadow-md dark:bg-dark-primary"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="glass p-6 rounded-xl"
           >
-            <div className="flex items-center mb-4 text-primary">
-              <FiPhone className="w-6 h-6 mr-3" />
-              <h3 className="text-xl font-semibold dark:text-gray-100">Phone</h3>
-            </div>
-            <p className="text-gray-600 dark:text-gray-300">+251 919437584</p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-            viewport={{ once: true }}
-            className="p-6 rounded-lg shadow-md dark:bg-dark-primary"
-          >
-            <div className="flex items-center mb-4 text-primary">
-              <FiMapPin className="w-6 h-6 mr-3" />
-              <h3 className="text-xl font-semibold dark:text-gray-100">Location</h3>
-            </div>
-            <p className="text-gray-600 dark:text-gray-300">Addis Ababa, Ethiopia</p>
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-light border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-light border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={form.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-light border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                  rows="4"
+                  className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-light border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full btn-primary"
+              >
+                {loading ? 'Sending...' : 'Send Message'}
+              </button>
+              {success && (
+                <p className="text-green-500 text-center">
+                  Message sent successfully!
+                </p>
+              )}
+            </form>
           </motion.div>
         </div>
-
-        {/* Contact Form */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-12 rounded-lg shadow-lg p-8 dark:bg-dark-primary"
-        >
-          <h3 className="text-2xl font-semibold text-primary mb-6 text-center">Send me a message</h3>
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">
-                Your Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-100 leading-tight focus:outline-none focus:shadow-outline dark:bg-dark-secondary"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">
-                Your Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-100 leading-tight focus:outline-none focus:shadow-outline dark:bg-dark-secondary"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="subject" className="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={form.subject}
-                onChange={handleChange}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-100 leading-tight focus:outline-none focus:shadow-outline dark:bg-dark-secondary"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                rows="4"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-100 leading-tight focus:outline-none focus:shadow-outline dark:bg-dark-secondary"
-                required
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className={`btn-primary group relative overflow-hidden py-3 px-6 rounded-md font-semibold ${
-                loading ? 'cursor-wait' : ''
-              }`}
-              disabled={loading}
-            >
-              <span className="relative z-10">{loading ? 'Sending...' : 'Send Message'}</span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-primary/50 to-purple-500/50"
-                initial={{ x: "-100%" }}
-                animate={isHovered ? { x: "100%" } : { x: "-100%" }}
-                transition={{ duration: 0.5 }}
-              />
-            </button>
-
-            {success && (
-              <div className="text-green-500 mt-4">Thank you! Your message has been sent.</div>
-            )}
-            {error && (
-              <div className="text-red-500 mt-4">{error}</div>
-            )}
-          </form>
-        </motion.div>
       </div>
     </section>
     </div>
