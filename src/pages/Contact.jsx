@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import { FiMail, FiGithub,FiLinkedin,FiTwitter,FiPhone, FiMapPin } from 'react-icons/fi';
 import { useForm, ValidationError } from '@formspree/react';
 
 
@@ -73,7 +73,7 @@ const [error, setError] = useState(null); // Add this line if you don't have it
           Get in Touch
         </motion.h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-2 gap-1">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

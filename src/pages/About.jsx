@@ -4,24 +4,23 @@ import { FiBriefcase, FiAward, FiCode, FiCalendar } from 'react-icons/fi';
 // Experience data
 export const experiences = [
   {
-    year: '2025 - Present',
+    year: '2025 - Present ',
     title: 'Full Stack Developer',
-    company: 'Tech Company',
-    description: 'Leading development of enterprise-level web applications using React, Node.js, and cloud technologies.',
+    company:'OmishtuJoy Tech solutions',
+    description: 'Internship Laravel using Laravel,React,mysql,tailwind,bootstrap',
     icon: <FiBriefcase className="w-4 h-4" />
   },
   {
     year: '2021 - 2023',
     title: 'Mern Stack Developer',
-    company: 'Digital Agency',
-    description: 'Developed and maintained multiple client websites and web applications using modern technologies.',
+    description: 'react,node,express,mongodb',
     icon: <FiCode className="w-4 h-4" />
   },
   {
     year: '2019 - 2021',
     title: 'Flutter Developer',
-    company: 'Startup',
-    description: 'Built responsive and interactive user interfaces using Flutter and modern UI principles.',
+    company:'Freelance',    
+    description: 'Built responsive and interactive user interfaces using Flutter, firebase and modern UI principles.',
     icon: <FiAward className="w-4 h-4" />
   },
 ];

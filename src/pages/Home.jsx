@@ -498,7 +498,7 @@ const Home = () => {
             ))}
           </div>
               {/* Stats Section */}
-        <div className="my-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        {/* <div className="my-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
         
           <div className="glass p-6 rounded-xl">
             <h3 className="text-3xl font-bold text-primary">15+</h3>
@@ -508,7 +508,7 @@ const Home = () => {
             <h3 className="text-3xl font-bold text-primary">5+</h3>
             <p className="text-gray-600 dark:text-gray-300">Tech Stacks Mastered</p>
           </div>
-        </div>
+        </div> */}
         
         
         
