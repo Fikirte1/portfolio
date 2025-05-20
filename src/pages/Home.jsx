@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState,useEffect } from 'react';
 import { FiGithub, FiLinkedin, FiTwitter,FiCalendar, FiAward ,FiDownload, FiArrowDown, FiStar, FiCode, FiLayout, FiServer, FiDatabase, FiSmartphone, FiSearch, FiMail, FiMapPin,FiPhone, FiGlobe } from 'react-icons/fi';
 import HeroBackground from '../components/HeroBackground';
 import AnimatedText from '../components/AnimatedText';
@@ -12,7 +12,6 @@ import { testimonials } from './Testimonials';
 import Projects from './Projects'; // Adjust the path if it's in a different folder
 // import emailjs from '@emailjs/browser';
 import { useForm, ValidationError } from '@formspree/react';
-
  
   // const handleChange = (e) => {
   //   const { name, value } = e.target;
@@ -81,7 +80,16 @@ const Home = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const [isHovered, setIsHovered] = useState(false);
+  const roles = ["Full Stack Developer", "Flutter Developer"]; // Add or modify roles here
+  const [roleIndex, setRoleIndex] = useState(0);
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+    }, 3000); // Change role every 3 seconds
+
+    return () => clearInterval(intervalId); // Cleanup on unmount
+  }, [roles.length]);
 
 
   const [form, setForm] = useState({
@@ -260,9 +268,9 @@ const Home = () => {
                     </motion.span>
                   </h1>
                   <AnimatedText 
-                    text="Full Stack Developer" 
-                    className="text-4xl md:text-5xl lg:text-6xl mb-8 bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 dark:to-white text-transparent bg-clip-text" 
-                  />
+                    text={roles[roleIndex]}
+                  className="text-4xl md:text-5xl lg:text-6xl mb-8 bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 dark:to-white text-transparent bg-clip-text"
+                />
                 </motion.div>
               </div>
 
