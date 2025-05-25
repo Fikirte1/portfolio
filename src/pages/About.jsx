@@ -42,7 +42,7 @@ export const certificates = [
     title: 'Certified Mern Stack Developer',
     // issuer: 'Amazon Web Services',
     date: 'Sept 2022',
-    credential: 'AWS-123456',
+    credential: 'OmishtuJoy',
     icon: <FiAward />,
     image: 'photo_2025-03-06_08-51-46.jpg',
   },
@@ -58,7 +58,7 @@ export const certificates = [
     title: 'Certified Laravel Developer',
     // issuer: 'Google',
     date: 'dec 2025',
-    credential: 'GCP-345678',
+    credential: 'OmishtuJoy Tech solutions',
     icon: <FiAward />,
     image: '/photo_2025-03-06_08-52-15.jpg',
   }
@@ -75,11 +75,13 @@ const About = () => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl font-bold mb-4">About Me</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            I'm a passionate full-stack developer with a keen eye for creating elegant solutions
-            to complex problems. With years of experience in web development, I specialize in
-            building scalable and performant applications.
-          </p>
+<p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+  I'm a passionate full-stack developer skilled in building web and mobile apps using Laravel, Node.js, React,flutter,firebase,Tailwind CSS and Bootstrap.
+   while also exploring AI and machine learning to create smarter, future-ready solutions. I'm a fast learner who enjoys solving real-world problems through clean and efficient code.
+</p>
+
+
+
         </motion.div>
 
         {/* Experience Timeline */}

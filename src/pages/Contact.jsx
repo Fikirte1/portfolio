@@ -98,7 +98,7 @@ const [error, setError] = useState(null); // Add this line if you don't have it
                   <div>
                     <h3 className="font-medium">Phone</h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      +1 (123) 456-7890
+                      +251 919437584
                     </p>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ const [error, setError] = useState(null); // Add this line if you don't have it
                   <div>
                     <h3 className="font-medium">Location</h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      City, Country
+                      Ethiopia
                     </p>
                   </div>
                 </div>
@@ -127,7 +127,7 @@ const [error, setError] = useState(null); // Add this line if you don't have it
                   <FiGithub size={24} />
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://linkedin.com/in/FikirteShawul"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-light transition-colors"

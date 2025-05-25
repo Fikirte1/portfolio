@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiCode, FiLayout, FiServer, FiDatabase, FiSmartphone, FiSearch } from 'react-icons/fi';
+import { FiCode, FiLayout, FiServer, FiDatabase, FiSmartphone, FiSearch, FiDribbble } from 'react-icons/fi';
 
 // Services data
 export const services = [
@@ -60,7 +60,7 @@ export const services = [
   {
     title: 'Figma Design',
     description: 'Modern and clean UI designs crafted in Figma for seamless development handoff.',
-    icon: <FiSearch className="w-8 h-8" />,
+    icon: <FiDribbble className="w-8 h-8" />,
     features: [
       'UI/UX Wireframes',
       'Prototyping',
@@ -71,7 +71,7 @@ export const services = [
    {
     title: 'Laravel',
     description: 'Modern and clean UI designs crafted in Figma for seamless development handoff.',
-    icon: <FiSearch className="w-8 h-8" />,
+    icon: <FiLayout className="w-8 h-8" />,
     features: [
       'UI/UX Wireframes',
       'Prototyping',

@@ -969,7 +969,7 @@ const Home = () => {
                   <div>
                     <h3 className="font-medium">Phone</h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      +1 (123) 456-7890
+                      +251 919437584
                     </p>
                   </div>
                 </div>
@@ -978,7 +978,7 @@ const Home = () => {
                   <div>
                     <h3 className="font-medium">Location</h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      City, Country
+                     Ethiopia
                     </p>
                   </div>
                 </div>
