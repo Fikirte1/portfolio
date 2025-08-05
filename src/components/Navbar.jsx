@@ -101,5 +101,4 @@ const Navbar = ({ isDark, setIsDark }) => {
     </nav>
   );
 };
-
 export default Navbar; 
