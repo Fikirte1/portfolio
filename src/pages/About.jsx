@@ -1,6 +1,6 @@
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { useRef, useState } from 'react';
 import { FiBriefcase, FiAward, FiCode, FiCalendar, FiDownload } from 'react-icons/fi';
 import { Canvas } from '@react-three/fiber';
 import { Stars, OrbitControls, Float } from '@react-three/drei';
@@ -17,7 +17,7 @@ export const experiences = [
   {
     year: 'Jul 2024 - Sept 2024',
     title: 'MERN Stack Developer',
-    company: 'Freelance',
+    company: 'Omshtu Joy Tech Solutions',
     description: 'Built full-stack applications using React, Node.js, Express, and MongoDB, delivering dynamic and performant user experiences.',
     icon: <FiCode className="w-4 h-4" />,
   },
@@ -67,6 +67,7 @@ const About = () => {
   const heroRef = useRef(null);
   const yBackground = useTransform(scrollYProgress, [0, 0.5], ['0%', '10%']);
   const opacityBackground = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+  const [selectedCertIndex, setSelectedCertIndex] = useState(null);
 
   return (
     <div className="min-h-screen relative bg-gradient-to-b from-gray-50 to-white dark:from-dark-light dark:to-dark">
@@ -89,197 +90,251 @@ const About = () => {
         </Canvas>
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent" />
       </motion.div>
+       <div className="container mx-auto px-4 py-20 relative z-10">
+ <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="text-center mb-20"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+        About Me
+      </h2>
+      <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        I'm a passionate full-stack developer with a keen eye for creating elegant solutions
+        to complex problems. I specialize in building scalable and performant applications.
+      </p>
+      <motion.a
+        href="/Fikirte-Shawul-Res.pdf"
+        download
+        className="mt-6 inline-flex items-center px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-colors shadow-lg hover:shadow-primary/40"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        aria-label="Download Fikirte's Resume"
+      >
+        <FiDownload className="mr-2" />
+        Download CV
+      </motion.a>
+    </motion.div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        {/* Introduction */}
+    {/* Experience Timeline */}
+    <div className="relative mb-20">
+      <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20" />
+      {experiences.map((exp, index) => (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          key={exp.year}
+          initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.2 }}
+          viewport={{ once: true }}
+          className={`relative mb-12 md:w-1/2 ${index % 2 === 0 ? 'ml-0 md:ml-auto' : 'ml-0 md:mr-auto'}`}
         >
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500">
-            About Me
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            I'm Fikirte, a passionate Full Stack and Flutter developer with expertise in Laravel, Node.js, React, Flutter, Firebase, Tailwind CSS, and Bootstrap. I specialize in building scalable web and mobile applications, while exploring AI and machine learning to create innovative, future-ready solutions. My focus is on delivering clean, efficient code to solve real-world problems.
-          </p>
-          <motion.a
-            href="/Fikirte-Shawul-Res.pdf"
-            download
-            className="mt-6 inline-flex items-center px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-colors shadow-md hover:shadow-primary/40"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Download Fikirte's resume"
-          >
-            <FiDownload className="mr-2" />
-            Download CV
-          </motion.a>
+          <div className="glass p-6 rounded-xl relative hover:shadow-xl transition-shadow">
+            <div className="absolute -left-3 top-6 w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-lg">
+              {exp.icon}
+            </div>
+            <div className="ml-4">
+              <span className="text-sm text-primary font-semibold">{exp.year}</span>
+              <h3 className="text-xl font-bold mt-1">{exp.title}</h3>
+              <p className="text-gray-600 dark:text-gray-300">{exp.company}</p>
+              <p className="mt-2 text-gray-600 dark:text-gray-300">{exp.description}</p>
+            </div>
+          </div>
         </motion.div>
+      ))}
+    </div>
 
-        {/* Experience Timeline */}
+    {/* Stats Section */}
+   {/* <div className="my-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+      {[
+        { value: '15+', label: 'Projects Completed' },
+        { value: '5+', label: 'Tech Stacks Mastered' },
+        { value: '3+', label: 'Years Experience' }
+      ].map((stat, i) => (
         <motion.div
+          key={stat.label}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6, delay: i * 0.1 }}
+          className="glass p-6 rounded-xl hover:shadow-lg transition-shadow"
         >
-          <h2 className="text-3xl font-bold mb-4">Experience</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            My professional journey in web and mobile development.
-          </p>
+          <h3 className="text-4xl font-bold text-primary">{stat.value}</h3>
+          <p className="text-gray-600 dark:text-gray-300">{stat.label}</p>
         </motion.div>
-        <div className="relative mb-20">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-secondary dark:from-primary-dark dark:to-secondary-dark" />
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={exp.year}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className={`relative mb-12 ${index % 2 === 0 ? 'md:ml-auto md:mr-8' : 'md:mr-auto md:ml-8'} w-full md:w-[45%]`}
-            >
-              <div className="glass p-6 rounded-xl relative backdrop-blur-md bg-white/20 dark:bg-dark/20 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
-                <motion.div
-                  className={`absolute top-6 ${index % 2 === 0 ? '-left-4' : '-right-4'} w-8 h-8 rounded-full flex items-center justify-center text-white ${index % 2 === 0 ? 'bg-primary' : 'bg-secondary'}`}
-                  whileHover={{ scale: 1.2, rotate: 360 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {exp.icon}
-                </motion.div>
-                <div className={`${index % 2 === 0 ? 'ml-8' : 'mr-8'}`}>
-                  <span className="text-sm font-semibold text-primary dark:text-primary-dark">{exp.year}</span>
-                  <h3 className="text-xl font-bold mt-1">{exp.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 font-medium">{exp.company}</p>
-                  <p className="mt-2 text-gray-600 dark:text-gray-300">{exp.description}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+      ))}
+    </div>*/}
 
-        {/* Skills */}
+    {/* Skills Section */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {skills.map((skill, index) => (
         <motion.div
+          key={skill.name}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="glass p-6 rounded-xl hover:shadow-lg transition-shadow"
         >
-          <h2 className="text-3xl font-bold mb-4">Skills</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A snapshot of my technical expertise across web and mobile development.
-          </p>
-        </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {skills.map((skill, index) => (
+          <div className="flex justify-between mb-2">
+            <span className="font-semibold">{skill.name}</span>
+            <span className="text-primary">{skill.level}%</span>
+          </div>
+          <div className="h-3 bg-gray-200 dark:bg-dark-light rounded-full overflow-hidden">
             <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ width: 0 }}
+              whileInView={{ width: `${skill.level}%` }}
+              transition={{ duration: 1, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="glass p-6 rounded-xl relative group hover:shadow-xl transition-all duration-300"
-              aria-label={`Skill: ${skill.name}`}
-            >
-              <div className="flex justify-between items-center mb-2">
-                <span className="font-semibold text-gray-800 dark:text-gray-200">{skill.name}</span>
-                <span className="text-primary dark:text-primary-dark font-semibold">{skill.level}%</span>
-              </div>
-              <div className="h-2 bg-gray-200 dark:bg-dark-light rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: index * 0.1, ease: 'easeOut' }}
-                  viewport={{ once: true }}
-                  className="h-full bg-gradient-to-r from-primary to-secondary dark:from-primary-dark dark:to-secondary-dark rounded-full"
-                />
-              </div>
-              <motion.div
-                className="absolute inset-0 bg-primary/10 dark:bg-primary-dark/10 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300 flex items-center justify-center"
-                initial={{ opacity: 0, y: 10 }}
-                whileHover={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <p className="text-sm text-gray-600 dark:text-gray-300 text-center p-4">{skill.description}</p>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
+              className="h-full bg-gradient-to-r from-primary to-purple-600 rounded-full"
+            />
+          </div>
+        </motion.div>
+      ))}
+    </div>
 
-        {/* Certifications */}
+    {/* Certifications */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="text-center mb-12"
+    >
+      <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+        Certifications
+      </h2>
+      <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Professional certifications and achievements in technology.
+      </p>
+    </motion.div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {certificates.map((cert, index) => (
         <motion.div
+          key={index}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          whileHover={{ scale: 1.05 }}
+          className="glass p-6 rounded-xl hover:shadow-xl transition-shadow flex flex-col justify-between"
         >
-          <h2 className="text-3xl font-bold mb-4">Certifications</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Professional certifications showcasing my commitment to continuous learning.
-          </p>
-        </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {certificates.map((cert, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)' }}
-              className="glass p-6 rounded-xl relative backdrop-blur-md bg-white/20 dark:bg-dark/20 border border-gray-200 dark:border-gray-700 transition-all duration-300"
-              aria-label={`Certification: ${cert.title}`}
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <motion.div
-                  className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark flex items-center justify-center text-xl"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  {cert.icon}
-                </motion.div>
-                <div>
-                  <h3 className="font-bold text-lg">{cert.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300">{cert.issuer}</p>
-                </div>
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-12 h-12 rounded-full bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark flex items-center justify-center text-xl">
+                {cert.icon}
               </div>
-              <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                <div className="flex items-center gap-2">
-                  <FiCalendar className="w-4 h-4" />
-                  <span>{cert.date}</span>
-                </div>
-                <div>Credential ID: {cert.credential}</div>
+              <div>
+                <h3 className="font-bold">{cert.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{cert.issuer}</p>
               </div>
+            </div>
+            <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+              <div className="flex items-center gap-2">
+                <FiCalendar className="w-4 h-4" />
+                <span>{cert.date}</span>
+              </div>
+              <div>Credential ID: {cert.credential}</div>
               {cert.image && (
-                <motion.div
-                  className="mt-4 relative overflow-hidden rounded-lg"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
+                <div className="mt-4">
                   <img
                     src={cert.image}
                     alt={cert.title}
-                    className="w-full h-48 object-cover rounded-lg shadow-md"
-                    loading="lazy"
+                    className="w-full h-48 object-cover rounded-lg shadow-md cursor-pointer"
+                    onClick={() => setSelectedCertIndex(index)}
                   />
-                  <motion.div
-                    className="absolute inset-0 bg-primary/20 dark:bg-primary-dark/20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  >
-                    <p className="text-white text-sm font-semibold">View Certificate</p>
-                  </motion.div>
-                </motion.div>
+                </div>
               )}
-            </motion.div>
-          ))}
-        </div>
-      </div>
+            </div>
+          </div>
+
+          {/* Google Drive View Button */}
+          {cert.googleDriveLink && (
+            <motion.a
+              href={cert.googleDriveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center justify-center px-4 py-2 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-colors shadow-md hover:shadow-primary/40"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View Details
+            </motion.a>
+          )}
+
+          {/* New Modal View Button */}
+          <motion.button
+            onClick={() => setSelectedCertIndex(index)}
+            className="mt-2 inline-flex items-center justify-center px-4 py-2 bg-primary text-white rounded-ful hover: bg-primary-700 transition-colors shadow-md hover:shadow-purple-400/40"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            View in Modal
+          </motion.button>
+        </motion.div>
+      ))}
     </div>
+  </div>
+
+  {/* Modal Carousel */}
+  <AnimatePresence>
+    {selectedCertIndex !== null && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4"
+        onClick={() => setSelectedCertIndex(null)}
+      >
+        <motion.div
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 0.8 }}
+          className="bg-white dark:bg-dark p-6 rounded-2xl shadow-xl max-w-lg w-full relative flex flex-col items-center"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={() => setSelectedCertIndex(null)}
+            className="absolute top-4 right-4 text-gray-600 dark:text-gray-300 font-bold text-xl"
+          >
+            ×
+          </button>
+
+          <h3 className="text-2xl font-bold mb-2">{certificates[selectedCertIndex].title}</h3>
+          <img
+            src={certificates[selectedCertIndex].image}
+            alt={certificates[selectedCertIndex].title}
+            className="w-full h-64 object-cover rounded-lg shadow-md mb-4"
+          />
+
+          <motion.div className="flex justify-between w-full mt-2">
+            <button
+              onClick={() =>
+                setSelectedCertIndex(
+                  (prev) => (prev === 0 ? certificates.length - 1 : prev - 1)
+                )
+              }
+              className="px-4 py-2 bg-primary text-white rounded-full"
+            >
+              Prev
+            </button>
+            <button
+              onClick={() =>
+                setSelectedCertIndex(
+                  (prev) => (prev === certificates.length - 1 ? 0 : prev + 1)
+                )
+              }
+              className="px-4 py-2 bg-primary text-white rounded-full"
+            >
+              Next
+            </button>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+  </div>
   );
 };
 

@@ -34,7 +34,7 @@ import { SiMongodb, SiFlutter, SiFirebase, SiCanva } from "react-icons/si";
   //     );
       
 
-  //     setSuccess(true);
+//     setSuccess(true);
   //     setForm({
   //       name: '',
   //       email: '',
@@ -205,22 +205,22 @@ const Home = () => {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
 
       {/* Left Column: Text */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <h1 className="text-6xl md:text-7xl font-bold mb-4">
-          Hi, I'm <span className="text-primary">Fikirte</span>
-        </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
-          Full-stack developer skilled in Laravel, React, Node.js, MongoDB, SQL, Flutter, Firebase, Figma, Canva, and more.
-        </p>
-        <div className="flex gap-4 mb-8">
-          <a href="#projects" className="btn-primary px-6 py-3">View My Work</a>
-          <a href="#contact" className="btn-secondary px-6 py-3">Contact Me</a>
-        </div>
-      </motion.div>
+   <motion.div
+  initial={{ opacity: 0, x: -50 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+>
+  <h1 className="text-6xl md:text-7xl font-bold mb-4">
+    Hello, I’m <span className="text-primary">Fikirte</span>
+  </h1>
+  <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl leading-relaxed">
+    I am a results-oriented full-stack developer specializing in building scalable, high-performance web and mobile applications. I focus on delivering elegant, user-centered solutions that solve real-world problems and create meaningful impact.
+  </p>
+  <div className="flex flex-wrap gap-4 mb-8">
+    <a href="/projects" className="btn-primary px-6 py-3 rounded-full">View My Work</a>
+    <a href="/contact" className="btn-secondary px-6 py-3 rounded-full">Connect With Me</a>
+  </div>
+</motion.div>
 
       {/* Right Column: Image */}
       <motion.div
@@ -272,9 +272,8 @@ const Home = () => {
 
 
 
-      {/* About Section */}
-
-
+      {/* About Section */}               
+ 
 <section ref={aboutRef} className="py-24 relative overflow-hidden">
   {/* Background Gradient + Shapes */}
   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50 dark:to-dark-light opacity-50" />
@@ -338,7 +337,7 @@ const Home = () => {
     </div>
 
     {/* Stats Section */}
-    <div className="my-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+   {/*  <div className="my-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
       {[
         { value: '15+', label: 'Projects Completed' },
         { value: '5+', label: 'Tech Stacks Mastered' },
@@ -355,7 +354,7 @@ const Home = () => {
           <p className="text-gray-600 dark:text-gray-300">{stat.label}</p>
         </motion.div>
       ))}
-    </div>
+    </div>*/}
 
     {/* Skills Section */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -527,11 +526,6 @@ const Home = () => {
     )}
   </AnimatePresence>
 </section>
-
-
-
-
-
 
       {/* Services Section */}
       <section ref={servicesRef} className="py-20 bg-gray-50 dark:bg-dark-light relative">
