@@ -1,6 +1,6 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform ,AnimatePresence} from 'framer-motion';
 import { useRef, useState,useEffect } from 'react';
-import { FiGithub, FiLinkedin, FiTwitter,FiCalendar, FiAward ,FiDownload, FiArrowDown, FiStar, FiCode, FiLayout, FiServer, FiDatabase, FiSmartphone, FiSearch, FiMail, FiMapPin,FiPhone, FiGlobe } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiSend,FiCalendar, FiAward ,FiDownload, FiArrowDown, FiStar, FiCode, FiLayout, FiServer, FiDatabase, FiSmartphone, FiSearch, FiMail, FiMapPin,FiPhone, FiGlobe } from 'react-icons/fi';
 import HeroBackground from '../components/HeroBackground';
 import AnimatedText from '../components/AnimatedText';
 import CustomCursor from '../components/Custom';
@@ -12,7 +12,10 @@ import { testimonials } from './Testimonials';
 import Projects from './Projects'; // Adjust the path if it's in a different folder
 // import emailjs from '@emailjs/browser';
 import { useForm, ValidationError } from '@formspree/react';
- 
+import { FaLaravel, FaReact, FaNodeJs, FaDatabase, FaFigma } from "react-icons/fa";
+import { SiMongodb, SiFlutter, SiFirebase, SiCanva } from "react-icons/si";
+
+
   // const handleChange = (e) => {
   //   const { name, value } = e.target;
   //   setForm({ ...form, [name]: value });
@@ -109,6 +112,7 @@ const Home = () => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
+  const [selectedCertIndex, setSelectedCertIndex] = useState(null);
 
 
  const handleSubmit = async (e) => {
@@ -168,439 +172,365 @@ const Home = () => {
     <div className="min-h-screen">
       <CustomCursor />
       
-      {/* Hero Section */}
-      <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-primary/5 dark:from-dark dark:via-dark-light dark:to-primary/10">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            animate={{
-              scale: [1, 1, 1],
-              rotate: [0, 90, 360],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{
-              scale: [1.2, 1, 1.2],
-              rotate: [360, 180, 0],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl"
-          />
+ {/* Hero Section */}
+<section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-primary/5 dark:from-dark dark:via-dark-light dark:to-primary/10">
+
+  {/* Animated Logo Watermark */}
+  <motion.img
+    src="/logo.png"
+    alt="Logo Watermark"
+    className="absolute inset-0 m-auto opacity-5 w-[80%] h-auto pointer-events-none"
+    initial={{ scale: 0.9, opacity: 0 }}
+    animate={{ scale: 1, opacity: 0.05 }}
+    transition={{ duration: 2 }}
+  />
+
+  {/* Floating Tech Icons */}
+  <div className="absolute inset-0 pointer-events-none">
+    {[FaLaravel, FaReact, FaNodeJs, SiMongodb, FaDatabase, SiFlutter, SiFirebase, FaFigma, SiCanva].map((Icon, i) => (
+      <motion.div
+        key={i}
+        className="absolute"
+        style={{ top: `${Math.random() * 90}%`, left: `${Math.random() * 90}%` }}
+        animate={{ y: [0, -20, 0], rotate: [0, 360] }}
+        transition={{ duration: 6 + Math.random() * 4, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Icon size={32} />
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Hero Content - Split Two Columns */}
+  <div className="relative z-10 container mx-auto px-4 h-screen flex items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+
+      {/* Left Column: Text */}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-6xl md:text-7xl font-bold mb-4">
+          Hi, I'm <span className="text-primary">Fikirte</span>
+        </h1>
+        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
+          Full-stack developer skilled in Laravel, React, Node.js, MongoDB, SQL, Flutter, Firebase, Figma, Canva, and more.
+        </p>
+        <div className="flex gap-4 mb-8">
+          <a href="#projects" className="btn-primary px-6 py-3">View My Work</a>
+          <a href="#contact" className="btn-secondary px-6 py-3">Contact Me</a>
         </div>
+      </motion.div>
 
-        {/* Floating Tech Icons */}
-        <div className="absolute inset-0">
-          <div className="relative w-full h-full">
-            {[FiCode, FiLayout, FiServer].map((Icon, index) => (
-              <FloatingIcon 
-                key={index} 
-                Icon={Icon} 
-                index={index} 
-                baseDelay={1.5}
-                style={{
-                  left: `${20 + index * 30}%`,
-                  top: `${30 + index * 20}%`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10 h-screen flex items-center">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              className="text-left relative"
-            >
-              <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="inline-block mb-6"
-              >
-                <div className="glass px-6 py-2 rounded-full text-primary font-semibold backdrop-blur-sm border border-primary/20">
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    Welcome to my portfolio
-                  </motion.span>
-                </div>
-              </motion.div>
-              
-              <div className="relative">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                >
-                  <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-pink-500">
-                      Hi, I'm{" "}
-                    </span>
-                    <motion.span
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className="text-primary relative inline-block"
-                    >
-                      Fikirte
-                      <motion.span
-                        className="absolute -bottom-2 left-0 w-full h-1 bg-primary"
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ delay: 0.8, duration: 0.6 }}
-                      />
-                    </motion.span>
-                  </h1>
-                  <AnimatedText 
-                    text={roles[roleIndex]}
-                  className="text-4xl md:text-5xl lg:text-6xl mb-8 bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 dark:to-white text-transparent bg-clip-text"
-                />
-                </motion.div>
-              </div>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl leading-relaxed"
-              >
-                I create beautiful and functional web applications that help businesses grow and succeed in the digital world.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="flex flex-wrap gap-4"
-              >
-                <motion.button
-                  onClick={() => scrollToSection(projectsRef)}
-                  className="btn-primary group relative overflow-hidden px-8 py-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10">View My Work</span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-primary/50 to-purple-500/50"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </motion.button>
-                <motion.button
-                  onClick={() => scrollToSection(contactRef)}
-                  className="btn-secondary group relative overflow-hidden px-8 py-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10">contact me</span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-gray-200/20 to-primary/20"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </motion.button>
-                {/* <motion.a
-                  href="#ContactRef"
-                  className="btn-secondary group relative overflow-hidden px-8 py-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10">Contact Me</span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-gray-200/20 to-primary/20"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </motion.a> */}
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="flex gap-6 mt-8"
-              >
-                {[
-                  { icon: FiGithub, link: "https://github.com/Fikirte1", color: "hover:text-[#333]" },
-                  { icon: FiLinkedin, link: "https://linkedin.com/in/Fikirte Shawul", color: "hover:text-[#0077b5]" },
-                  { icon: FiTwitter, link: "https://twitter.com/yourusername", color: "hover:text-[#1da1f2]" }
-                ].map((social, index) => (
-                  <motion.a
-                    key={social.link}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`social-link relative group ${social.color}`}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7 + index * 0.1 }}
-                  >
-                    <social.icon size={24} className="relative z-10" />
-                    <motion.div
-                      className="absolute inset-0 bg-current rounded-full opacity-20"
-                      initial={{ scale: 0 }}
-                      whileHover={{ scale: 1.5 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </motion.a>
-                ))}
-              </motion.div>
-            </motion.div>
-
-            {/* Right Content - Workspace Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative w-full max-w-md mx-auto lg:mx-0"
-            >
-              <motion.div
-                animate={{
-                  scale: [1, 1.02, 1.5],
-                  rotate: [0, 9, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-                className="relative z-10 rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]"
-              >
-                <img
-                  src="/photo_2025-01-04_11-10-34.jpg"
-                  alt="Creative Workspace"
-                  className="w-full h-full object-cover object-center"
-                  style={{ maxHeight: '350px' }}
-                />
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-purple-500/20 to-pink-500/20 mix-blend-overlay"
-                  animate={{
-                    opacity: [0.5, 0.8, 0.5],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                />
-              </motion.div>
-
-              {/* Decorative Elements */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.5, 0.8, 0.5],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"
-                animate={{
-                  scale: [1.2, 1, 1.2],
-                  opacity: [0.5, 0.8, 0.5],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-            </motion.div>
-          </div>
-        </div>
-
-        <motion.button
-          onClick={() => scrollToSection(aboutRef)}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
+      {/* Right Column: Image */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative w-full max-w-md mx-auto lg:mx-0"
+      >
+        <motion.div
+          animate={{ scale: [1, 1.02, 1.05], rotate: [0, 9, 0] }}
+          transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
+          className="relative z-10 rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]"
         >
+          <img
+            src="/photo_2025-01-04_11-10-34.jpg"
+            alt="Creative Workspace"
+            className="w-full h-full object-cover object-center"
+            style={{ maxHeight: '600px' }}
+          />
           <motion.div
-            animate={{
-              y: [0, 10, 0],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-            className="p-2 rounded-full bg-primary/10 backdrop-blur-sm"
-          >
-            <FiArrowDown className="w-6 h-6 text-primary" />
-          </motion.div>
-        </motion.button>
-      </section>
+            className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-purple-500/20 to-pink-500/20 mix-blend-overlay"
+            animate={{ opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+          />
+        </motion.div>
+      </motion.div>
+
+    </div>
+  </div>
+
+  {/* Scroll Down Indicator */}
+  <motion.button
+    onClick={() => scrollToSection(aboutRef)}
+    className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 1 }}
+  >
+    <motion.div
+      animate={{ y: [0, 10, 0] }}
+      transition={{ duration: 1.5, repeat: Infinity }}
+      className="p-2 rounded-full bg-primary/10 backdrop-blur-sm"
+    >
+      <FiArrowDown className="w-6 h-6 text-primary" />
+    </motion.div>
+  </motion.button>
+
+</section>
+
+
 
       {/* About Section */}
-      <section ref={aboutRef} className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50 dark:to-dark-light opacity-50" />
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-4">About Me</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              I'm a passionate full-stack developer with a keen eye for creating elegant solutions
-              to complex problems. With years of experience in web development, I specialize in
-              building scalable and performant applications.
-            </p>
-          </motion.div>
 
-          {/* Experience Timeline */}
-          <div className="relative mb-20">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-primary/20" />
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={exp.year}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className={`relative mb-12 ${
-                  index % 2 === 0 ? 'ml-0 md:ml-auto' : 'ml-0 md:mr-auto'
-                } md:w-1/2`}
-              >
-                <div className="glass p-6 rounded-xl relative hover:shadow-lg transition-shadow">
-                  <div className="absolute -left-3 top-6 w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white">
-                    {exp.icon}
-                  </div>
-                  <div className="ml-4">
-                    <span className="text-sm text-primary font-semibold">{exp.year}</span>
-                    <h3 className="text-xl font-bold mt-1">{exp.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{exp.company}</p>
-                    <p className="mt-2 text-gray-600 dark:text-gray-300">{exp.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+
+<section ref={aboutRef} className="py-24 relative overflow-hidden">
+  {/* Background Gradient + Shapes */}
+  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50 dark:to-dark-light opacity-50" />
+  <div className="absolute top-0 left-0 w-72 h-72 bg-primary/10 rounded-full filter blur-3xl animate-blob -z-10" />
+  <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-400/10 rounded-full filter blur-2xl animate-blob animation-delay-2000 -z-10" />
+
+  <div className="container mx-auto px-4 relative">
+    {/* Header + Intro */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="text-center mb-20"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+        About Me
+      </h2>
+      <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        I'm a passionate full-stack developer with a keen eye for creating elegant solutions
+        to complex problems. I specialize in building scalable and performant applications.
+      </p>
+      <motion.a
+        href="/Fikirte-Shawul-Res.pdf"
+        download
+        className="mt-6 inline-flex items-center px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-colors shadow-lg hover:shadow-primary/40"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        aria-label="Download Fikirte's Resume"
+      >
+        <FiDownload className="mr-2" />
+        Download CV
+      </motion.a>
+    </motion.div>
+
+    {/* Experience Timeline */}
+    <div className="relative mb-20">
+      <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20" />
+      {experiences.map((exp, index) => (
+        <motion.div
+          key={exp.year}
+          initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.2 }}
+          viewport={{ once: true }}
+          className={`relative mb-12 md:w-1/2 ${index % 2 === 0 ? 'ml-0 md:ml-auto' : 'ml-0 md:mr-auto'}`}
+        >
+          <div className="glass p-6 rounded-xl relative hover:shadow-xl transition-shadow">
+            <div className="absolute -left-3 top-6 w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-lg">
+              {exp.icon}
+            </div>
+            <div className="ml-4">
+              <span className="text-sm text-primary font-semibold">{exp.year}</span>
+              <h3 className="text-xl font-bold mt-1">{exp.title}</h3>
+              <p className="text-gray-600 dark:text-gray-300">{exp.company}</p>
+              <p className="mt-2 text-gray-600 dark:text-gray-300">{exp.description}</p>
+            </div>
           </div>
-              {/* Stats Section */}
-        {/* <div className="my-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-        
-          <div className="glass p-6 rounded-xl">
-            <h3 className="text-3xl font-bold text-primary">15+</h3>
-            <p className="text-gray-600 dark:text-gray-300">Projects Completed</p>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* Stats Section */}
+    <div className="my-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+      {[
+        { value: '15+', label: 'Projects Completed' },
+        { value: '5+', label: 'Tech Stacks Mastered' },
+        { value: '3+', label: 'Years Experience' }
+      ].map((stat, i) => (
+        <motion.div
+          key={stat.label}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: i * 0.1 }}
+          className="glass p-6 rounded-xl hover:shadow-lg transition-shadow"
+        >
+          <h3 className="text-4xl font-bold text-primary">{stat.value}</h3>
+          <p className="text-gray-600 dark:text-gray-300">{stat.label}</p>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* Skills Section */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {skills.map((skill, index) => (
+        <motion.div
+          key={skill.name}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          className="glass p-6 rounded-xl hover:shadow-lg transition-shadow"
+        >
+          <div className="flex justify-between mb-2">
+            <span className="font-semibold">{skill.name}</span>
+            <span className="text-primary">{skill.level}%</span>
           </div>
-          <div className="glass p-6 rounded-xl">
-            <h3 className="text-3xl font-bold text-primary">5+</h3>
-            <p className="text-gray-600 dark:text-gray-300">Tech Stacks Mastered</p>
+          <div className="h-3 bg-gray-200 dark:bg-dark-light rounded-full overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: `${skill.level}%` }}
+              transition={{ duration: 1, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="h-full bg-gradient-to-r from-primary to-purple-600 rounded-full"
+            />
           </div>
-        </div> */}
-        
-        
-        
-          {/* Skills */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="glass p-6 rounded-xl hover:shadow-lg transition-shadow"
-              >
-                <div className="flex justify-between mb-2">
-                  <span className="font-semibold">{skill.name}</span>
-                  <span className="text-primary">{skill.level}%</span>
-                </div>
-                <div className="h-2 bg-gray-200 dark:bg-dark-light rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="h-full bg-primary rounded-full"
+        </motion.div>
+      ))}
+    </div>
+
+    {/* Certifications */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="text-center mb-12"
+    >
+      <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+        Certifications
+      </h2>
+      <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Professional certifications and achievements in technology.
+      </p>
+    </motion.div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {certificates.map((cert, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          whileHover={{ scale: 1.05 }}
+          className="glass p-6 rounded-xl hover:shadow-xl transition-shadow flex flex-col justify-between"
+        >
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-12 h-12 rounded-full bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark flex items-center justify-center text-xl">
+                {cert.icon}
+              </div>
+              <div>
+                <h3 className="font-bold">{cert.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{cert.issuer}</p>
+              </div>
+            </div>
+            <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+              <div className="flex items-center gap-2">
+                <FiCalendar className="w-4 h-4" />
+                <span>{cert.date}</span>
+              </div>
+              <div>Credential ID: {cert.credential}</div>
+              {cert.image && (
+                <div className="mt-4">
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    className="w-full h-48 object-cover rounded-lg shadow-md cursor-pointer"
+                    onClick={() => setSelectedCertIndex(index)}
                   />
                 </div>
-              </motion.div>
-            ))}
+              )}
+            </div>
           </div>
-            <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-16"
-                  >
-                    <h2 className="text-3xl font-bold mb-4">Certifications</h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                      Professional certifications and achievements in technology.
-                    </p>
-                  </motion.div>
-          
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                    {certificates.map((cert, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        whileHover={{ scale: 1.05 }}
-                        className="glass p-6 rounded-xl hover:shadow-lg transition-shadow"
-                      >
-                        <div className="flex items-center gap-4 mb-4">
-                          <div className="w-12 h-12 rounded-full bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark flex items-center justify-center text-xl">
-                            {cert.icon}
-                          </div>
-                          <div>
-                            <h3 className="font-bold">{cert.title}</h3>
-                            <p className="text-gray-600 dark:text-gray-300">{cert.issuer}</p>
-                          </div>
-                        </div>
-                        <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                          <div className="flex items-center gap-2">
-                            <FiCalendar className="w-4 h-4" />
-                            <span>{cert.date}</span>
-                          </div>
-                          <div>Credential ID: {cert.credential}</div>
-                          {cert.image && (
-                            <div className="mt-4">
-                              <img
-                                src={cert.image}
-                                alt={cert.title}
-                                className="w-full h-48 object-cover rounded-lg shadow-md"
-                              />
-                            </div>
-                          )}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-        </div>
-      </section>
+
+          {/* Google Drive View Button */}
+          {cert.googleDriveLink && (
+            <motion.a
+              href={cert.googleDriveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center justify-center px-4 py-2 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-colors shadow-md hover:shadow-primary/40"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View Details
+            </motion.a>
+          )}
+
+          {/* New Modal View Button */}
+          <motion.button
+            onClick={() => setSelectedCertIndex(index)}
+            className="mt-2 inline-flex items-center justify-center px-4 py-2 bg-primary text-white rounded-ful hover: bg-primary-700 transition-colors shadow-md hover:shadow-purple-400/40"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            View in Modal
+          </motion.button>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+
+  {/* Modal Carousel */}
+  <AnimatePresence>
+    {selectedCertIndex !== null && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4"
+        onClick={() => setSelectedCertIndex(null)}
+      >
+        <motion.div
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 0.8 }}
+          className="bg-white dark:bg-dark p-6 rounded-2xl shadow-xl max-w-lg w-full relative flex flex-col items-center"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={() => setSelectedCertIndex(null)}
+            className="absolute top-4 right-4 text-gray-600 dark:text-gray-300 font-bold text-xl"
+          >
+            ×
+          </button>
+
+          <h3 className="text-2xl font-bold mb-2">{certificates[selectedCertIndex].title}</h3>
+          <img
+            src={certificates[selectedCertIndex].image}
+            alt={certificates[selectedCertIndex].title}
+            className="w-full h-64 object-cover rounded-lg shadow-md mb-4"
+          />
+
+          <motion.div className="flex justify-between w-full mt-2">
+            <button
+              onClick={() =>
+                setSelectedCertIndex(
+                  (prev) => (prev === 0 ? certificates.length - 1 : prev - 1)
+                )
+              }
+              className="px-4 py-2 bg-primary text-white rounded-full"
+            >
+              Prev
+            </button>
+            <button
+              onClick={() =>
+                setSelectedCertIndex(
+                  (prev) => (prev === certificates.length - 1 ? 0 : prev + 1)
+                )
+              }
+              className="px-4 py-2 bg-primary text-white rounded-full"
+            >
+              Next
+            </button>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</section>
+
+
+
+
 
 
       {/* Services Section */}
@@ -990,7 +920,7 @@ const Home = () => {
               <h2 className="text-2xl font-semibold mb-6">Social Media</h2>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/Fikirte1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-light transition-colors"
@@ -1005,14 +935,14 @@ const Home = () => {
                 >
                   <FiLinkedin size={24} />
                 </a>
-                <a
-                  href="https://twitter.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-light transition-colors"
-                >
-                  <FiTwitter size={24} />
-                </a>
+                  <a
+                 href="https://t.me/Sh123en"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-light transition-colors"
+               >
+                 <FiSend size={24} /> {/* Telegram-like icon */}
+               </a>
               </div>
             </div>
           </motion.div>

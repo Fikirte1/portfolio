@@ -1,85 +1,103 @@
 import { motion } from 'framer-motion';
-import { FiCode, FiLayout, FiServer, FiDatabase, FiSmartphone, FiSearch, FiDribbble } from 'react-icons/fi';
+import { 
+  FiCode, 
+  FiLayout, 
+  FiServer, 
+  FiDatabase, 
+  FiSmartphone, 
+  FiGlobe, 
+  FiDribbble 
+} from 'react-icons/fi';
 
 // Services data
 export const services = [
   {
     title: 'Web Development',
-    description: 'Custom web applications built with modern technologies and best practices.',
+    description: 'High-quality custom websites and web applications built with modern frameworks, optimized for speed, security, and scalability.',
     icon: <FiCode className="w-8 h-8" />,
     features: [
-      'Responsive Design',
+      'Responsive & Mobile-First Design',
       'Performance Optimization',
       'Cross-browser Compatibility',
-      'Modern UI/UX'
+      'SEO-Friendly Code'
     ]
   },
   {
     title: 'Frontend Development',
-    description: 'Beautiful and interactive user interfaces that engage your users.',
+    description: 'Visually stunning and highly interactive user interfaces that deliver seamless user experiences.',
     icon: <FiLayout className="w-8 h-8" />,
     features: [
-      'React Development',
-      'Component Architecture',
+      'React.js Development',
+      'Component-Based Architecture',
       'State Management',
-      'Animation & Transitions'
+      'Smooth Animations & Transitions'
     ]
   },
   {
     title: 'Backend Development',
-    description: 'Scalable and secure server-side solutions for your applications.',
+    description: 'Secure, reliable, and scalable server-side solutions that power your digital products.',
     icon: <FiServer className="w-8 h-8" />,
     features: [
-      'API Development',
-      'Database Design',
+      'RESTful & GraphQL API Development',
       'Authentication & Authorization',
-      'Cloud Integration'
+      'Cloud & Server Deployment',
+      'Integration with Third-Party Services'
     ]
   },
   {
     title: 'Database Solutions',
-    description: 'Efficient data management and storage solutions for your business.',
+    description: 'Efficient and well-structured data storage solutions to handle all your business information.',
     icon: <FiDatabase className="w-8 h-8" />,
     features: [
-      'Database Design',
-      'Query Optimization',
-      'Data Migration',
-      'Backup & Recovery'
+      'Database Schema Design',
+      'Query Performance Optimization',
+      'Data Migration & Backup',
+      'Data Recovery Solutions'
     ]
   },
   {
     title: 'Mobile Development',
-    description: 'Cross-platform mobile applications that work seamlessly.',
+    description: 'Cross-platform mobile apps that look and feel native on both iOS and Android.',
     icon: <FiSmartphone className="w-8 h-8" />,
     features: [
-      'Flutter',
-      'Mobile UI/UX',
-      'App Store Deployment'
+      'Flutter Development',
+      'Intuitive Mobile UI/UX',
+      'App Store & Play Store Deployment'
     ]
   },
   {
-    title: 'Figma Design',
-    description: 'Modern and clean UI designs crafted in Figma for seamless development handoff.',
+    title: 'UI/UX & Figma Design',
+    description: 'Beautiful, user-focused designs created in Figma for smooth collaboration with developers.',
     icon: <FiDribbble className="w-8 h-8" />,
     features: [
-      'UI/UX Wireframes',
-      'Prototyping',
-      'Component Systems',
-      'Developer Handoff'
+      'UI/UX Wireframes & Prototypes',
+      'Component Libraries',
+      'Interactive Mockups',
+      'Developer-Ready Handoff'
     ]
   },
-   {
-    title: 'Laravel',
-    description: 'Modern and clean UI designs crafted in Figma for seamless development handoff.',
+  {
+    title: 'Laravel Development',
+    description: 'Robust backend development using Laravel, perfect for secure, scalable, and feature-rich applications.',
     icon: <FiLayout className="w-8 h-8" />,
     features: [
-      'UI/UX Wireframes',
-      'Prototyping',
-      'Component Systems',
-      'Developer Handoff'
+      'Full-Stack Laravel Solutions',
+      'REST API Development',
+      'Database Management',
+      'Authentication & Security'
+    ]
+  },
+  {
+    title: 'Multi-Language & Localization',
+    description: 'Expand your reach globally with multi-language support and culturally adapted content for websites and applications.',
+    icon: <FiGlobe className="w-8 h-8" />,
+    features: [
+      'Multi-Language Website Setup',
+      'Language Switcher Integration',
+      'Translation & Localization',
+      'RTL (Right-to-Left) Language Support'
     ]
   }
-  
 ];
 
 const Services = () => {
@@ -93,9 +111,10 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl font-bold mb-4">Services</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            I offer a comprehensive range of web development services to help you build
-            the perfect digital solution for your business.
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            From crafting beautiful websites to building powerful applications, 
+            I provide end-to-end solutions tailored to your needs — including multi-language support 
+            to connect you with a global audience.
           </p>
         </motion.div>
 
@@ -135,10 +154,10 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="mt-20 text-center"
         >
-          <h2 className="text-3xl font-bold mb-6">Ready to Start Your Project?</h2>
+          <h2 className="text-3xl font-bold mb-6">Ready to Build Something Amazing?</h2>
           <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            Let's work together to bring your ideas to life. Contact me to discuss your project
-            and get a free consultation.
+            Whether it’s a modern website, a mobile app, or a multi-language platform, 
+            I can help bring your vision to life. Let’s create something impactful together.
           </p>
           <a href="/#ContactRef" className="btn-primary">
             Get in Touch
@@ -149,4 +168,4 @@ const Services = () => {
   );
 };
 
-export default Services; 
+export default Services;

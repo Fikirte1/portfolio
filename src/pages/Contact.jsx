@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { FiMail, FiGithub,FiLinkedin,FiTwitter,FiPhone, FiMapPin } from 'react-icons/fi';
+import { FiMail, FiGithub,FiLinkedin,FiSend,FiPhone, FiMapPin } from 'react-icons/fi';
 import { useForm, ValidationError } from '@formspree/react';
 
 
@@ -119,7 +119,7 @@ const [error, setError] = useState(null); // Add this line if you don't have it
               <h2 className="text-2xl font-semibold mb-6">Social Media</h2>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/Fikirte1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-light transition-colors"
@@ -134,14 +134,14 @@ const [error, setError] = useState(null); // Add this line if you don't have it
                 >
                   <FiLinkedin size={24} />
                 </a>
-                <a
-                  href="https://twitter.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-light transition-colors"
-                >
-                  <FiTwitter size={24} />
-                </a>
+              <a
+  href="https://t.me/Sh123en"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-light transition-colors"
+>
+  <FiSend size={24} /> {/* Telegram-like icon */}
+</a>
               </div>
             </div>
           </motion.div>
