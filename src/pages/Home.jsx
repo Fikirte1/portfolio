@@ -922,7 +922,7 @@ const Home = () => {
                   <FiGithub size={24} />
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/fikirte-shawul-a85928355"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-light transition-colors"
