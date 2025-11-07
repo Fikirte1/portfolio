@@ -217,8 +217,8 @@ const Home = () => {
     I am a results-oriented full-stack developer specializing in building scalable, high-performance web and mobile applications. I focus on delivering elegant, user-centered solutions that solve real-world problems and create meaningful impact.
   </p>
   <div className="flex flex-wrap gap-4 mb-8">
-    <a href="/projects" className="btn-primary px-6 py-3 rounded-full">View My Work</a>
-    <a href="/contact" className="btn-secondary px-6 py-3 rounded-full">Connect With Me</a>
+    <a href='/projects' className="btn-primary px-6 py-3 rounded-full">View My Work</a>
+    <a href='/contact' className="btn-secondary px-6 py-3 rounded-full">Connect With Me</a>
   </div>
 </motion.div>
 
@@ -294,8 +294,7 @@ const Home = () => {
       </h2>
       <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
         I'm a passionate full-stack developer with a keen eye for creating elegant solutions
-        to complex problems. I specialize in building scalable and performant applications.
-      </p>
+        to complex problems.</p>
       <motion.a
         href="/Fikirte-Shawul-Res.pdf"
         download
@@ -590,7 +589,7 @@ const Home = () => {
           >
             {/* <h2 className="text-4xl font-bold mb-4">Projects</h2> */}
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Here are some of my recent projects that showcase my skills and expertise.
+              Here are some of my projects that showcase my skills and expertise.
             </p>
             <Projects />
           </motion.div>

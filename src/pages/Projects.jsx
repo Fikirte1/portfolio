@@ -86,15 +86,15 @@ const projects = [
     github: 'https://github.com/Fikirte1/Asset_Management--Mern',
     //demo: 'https://food-delivery-app-demo.com',
   },
-  {
-    id: 10,
-    title: 'figma  design',
-    description: 'Figma website design .',
-    image: 'Mnas.png',
-    tags: ['UI Design'],
-    github: 'https://figma.com',
-    //demo: 'https://figma.com',
-  },
+  // {
+  //   id: 10,
+  //   title: 'figma  design',
+  //   description: 'Figma website design .',
+  //   image: 'Mnas.png',
+  //   tags: ['UI Design'],
+  //   github: 'https://figma.com',
+  //   //demo: 'https://figma.com',
+  // },
   
   // Add more projects as needed
 ];
