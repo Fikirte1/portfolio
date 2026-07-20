@@ -15,10 +15,10 @@ const Navbar = ({ isDark, setIsDark }) => {
     { path: '/projects', label: 'Projects' },
     { path: '/contact', label: 'Contact' },
     {
-      path: '/Fikirte-Shawul-Res',
+      path: '/Fikirte_Shawul_Resume',
       label: 'Resume',
       isExternal: true,
-      href: '/Fikirte-Shawul-Res.pdf',
+      href: '/Fikirte_Shawul Resume.pdf',
     },
   ];
 

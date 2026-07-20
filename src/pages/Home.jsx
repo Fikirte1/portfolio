@@ -83,7 +83,13 @@ const Home = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const [isHovered, setIsHovered] = useState(false);
-  const roles = ["Full Stack Developer", "Flutter Developer"]; // Add or modify roles here
+const roles = [
+  "Software Engineer",
+  "Full Stack Developer",
+  "Backend Developer",
+  "Flutter Developer",
+  "Enterprise System Developer"
+];
   const [roleIndex, setRoleIndex] = useState(0);
 
   useEffect(() => {
@@ -213,9 +219,13 @@ const Home = () => {
   <h1 className="text-6xl md:text-7xl font-bold mb-4">
     Hello, I’m <span className="text-primary">Fikirte</span>
   </h1>
-  <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl leading-relaxed">
-    I am a results-oriented full-stack developer specializing in building scalable, high-performance web and mobile applications. I focus on delivering elegant, user-centered solutions that solve real-world problems and create meaningful impact.
-  </p>
+<p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl leading-relaxed">
+  Software Engineer at <span className="font-semibold text-primary">
+    Dallol Tech PLC
+  </span> building scalable enterprise systems, web platforms, and cross-platform mobile applications.
+  Experienced in Laravel, CodeIgniter, React, Node.js, Go, Flutter, PostgreSQL, and RESTful API development.
+  Passionate about designing secure, high-performance software solutions that solve real-world business challenges.
+</p>
   <div className="flex flex-wrap gap-4 mb-8">
     <a href='/projects' className="btn-primary px-6 py-3 rounded-full">View My Work</a>
     <a href='/contact' className="btn-secondary px-6 py-3 rounded-full">Connect With Me</a>
@@ -296,7 +306,7 @@ const Home = () => {
         I'm a passionate full-stack developer with a keen eye for creating elegant solutions
         to complex problems.</p>
       <motion.a
-        href="/Fikirte-Shawul-Res.pdf"
+        href="/Fikirte_Shawul Resume.pdf"
         download
         className="mt-6 inline-flex items-center px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark transition-colors shadow-lg hover:shadow-primary/40"
         whileHover={{ scale: 1.05 }}

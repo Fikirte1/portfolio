@@ -8,40 +8,45 @@ import { Stars, OrbitControls, Float } from '@react-three/drei';
 // Experience data
 export const experiences = [
   {
-    year: 'Sept 2024 - Jan 2025',
-    title: 'Full Stack Developer',
-    company: 'OmishtuJoy Tech Solutions',
-    description: 'Developed web applications using Laravel, React, MySQL, Tailwind CSS, and Bootstrap during an internship, focusing on scalable and responsive solutions.',
+    year: '2025 - Present',
+    title: 'Software Engineer',
+    company: 'Dallol Tech PLC',
+    description:
+      'Developing enterprise ERP systems, government digital platforms, commercial booking systems, and Flutter mobile applications using CodeIgniter, Laravel, PostgreSQL, REST APIs, and modern web technologies. Mentoring interns and participating in the complete Software Development Life Cycle.',
     icon: <FiBriefcase className="w-4 h-4" />,
+  },
+  {
+    year: 'Sept 2024 - Jan 2025',
+    title: 'Full Stack Developer Intern',
+    company: 'Omishtu Joy Tech Solutions',
+    description:
+      'Developed Survey System and SaaS Asset Management platform using Laravel, MySQL, Blade, Bootstrap, Tailwind CSS, and REST APIs while collaborating in Agile teams.',
+    icon: <FiCode className="w-4 h-4" />,
   },
   {
     year: 'Jul 2024 - Sept 2024',
     title: 'MERN Stack Developer',
-    company: 'Omshtu Joy Tech Solutions',
-    description: 'Built full-stack applications using React, Node.js, Express, and MongoDB, delivering dynamic and performant user experiences.',
-    icon: <FiCode className="w-4 h-4" />,
-  },
-  {
-    year: '2024',
-    title: 'Flutter Developer',
-    company: 'Freelance',
-    description: 'Crafted responsive and interactive mobile applications using Flutter and Firebase, emphasizing modern UI/UX principles.',
+    company: 'Omishtu Joy Tech Solutions',
+    description:
+      'Developed scalable backend services and e-commerce solutions using Go (Golang), React, Node.js, Express, MongoDB, and GORM with a focus on performance and clean architecture.',
     icon: <FiAward className="w-4 h-4" />,
   },
 ];
-
 // Skills data
 export const skills = [
-  { name: 'React', level: 90, description: 'Building dynamic and responsive UIs with React and modern JavaScript.' },
-  { name: 'Node.js', level: 85, description: 'Creating scalable backend APIs with Node.js and Express.' },
-  { name: 'Laravel', level: 80, description: 'Developing robust web applications with Laravel and PHP.' },
-  { name: 'MongoDB', level: 75, description: 'Designing NoSQL databases for high-performance applications.' },
-  { name: 'Bootstrap', level: 85, description: 'Crafting responsive layouts with Bootstrap.' },
-  { name: 'Tailwind CSS', level: 90, description: 'Styling modern interfaces with utility-first Tailwind CSS.' },
-  { name: 'Figma', level: 70, description: 'Prototyping and designing UI/UX with Figma.' },
-  { name: 'Flutter', level: 65, description: 'Building cross-platform mobile apps with Flutter.' },
+  { name: 'Laravel', level: 95 },
+  { name: 'CodeIgniter', level: 95 },
+  { name: 'Go (Golang)', level: 85 },
+  { name: 'React.js', level: 90 },
+  { name: 'Flutter', level: 85 },
+  { name: 'Node.js', level: 85 },
+  { name: 'PostgreSQL', level: 90 },
+  { name: 'MySQL', level: 90 },
+  { name: 'MongoDB', level: 85 },
+  { name: 'Tailwind CSS', level: 95 },
+  { name: 'Bootstrap', level: 95 },
+  { name: 'Git', level: 90 },
 ];
-
 // Certificates data
 export const certificates = [
   {
@@ -101,10 +106,9 @@ const About = () => {
       <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
         About Me
       </h2>
-      <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-        I'm a passionate full-stack developer with a keen eye for creating elegant solutions
-        to complex problems.
-      </p>
+<p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-5xl mx-auto leading-relaxed">
+  I am a Software Engineer at <span className="font-semibold text-primary">Dallol Tech PLC</span> with nearly one year of professional experience designing, developing, and maintaining enterprise-grade web and mobile applications. My expertise includes Laravel, CodeIgniter, Go (Golang), React, Flutter, Node.js, PostgreSQL, MySQL, MongoDB, and RESTful API development. I have contributed to ERP systems, government digital infrastructure, commercial booking platforms, and cross-platform mobile applications while working in Agile teams. Passionate about clean architecture, scalable software, and intuitive user experiences, I continuously explore modern technologies to deliver reliable and high-performance solutions. I also mentor intern developers through the Software Development Life Cycle (SDLC), conduct code reviews, and promote best development practices. To improve productivity while maintaining code quality, I effectively utilize AI-powered development tools including Cursor, GitHub Copilot, ChatGPT, and DeepSeek. My goal is to build innovative software that solves real-world problems and creates meaningful impact.
+</p>
       <motion.a
         href="/Fikirte-Shawul-Res.pdf"
         download
